@@ -11,4 +11,11 @@ const CITIES: string[] = [
   'Dusseldorf'
 ];
 
-export { Setting, CITIES };
+const placeOptions: string[] = [
+  'Popular',
+  'Price: low to high',
+  'Price: high to low',
+  'Top rated first'
+];
+
+export { Setting, CITIES, placeOptions };
