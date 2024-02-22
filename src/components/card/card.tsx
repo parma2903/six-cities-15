@@ -1,6 +1,6 @@
 import { CardProps } from '../../mock';
 
-function OfferCard({isPremium, previewImage, price, title, type, rating}: CardProps): JSX.Element {
+function OfferCard({isPremium, previewImage, price, title, type, rating, isFavorite}: CardProps): JSX.Element {
   return (
     <article className="cities__card place-card">
       {isPremium ? (
@@ -26,7 +26,7 @@ function OfferCard({isPremium, previewImage, price, title, type, rating}: CardPr
             <span className="place-card__price-text">/&nbsp;night</span>
           </div>
           <button
-            className="place-card__bookmark-button button"
+            className={`place-card__bookmark-button button ${isFavorite ? 'place-card__bookmark-button--active' : ''}`}
             type="button"
           >
             <svg

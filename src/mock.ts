@@ -22,7 +22,7 @@ export type AllProps = {
   rating: number;
 };
 
-export type CardProps = Omit<AllProps, 'city'| 'location' | 'isFavorite'>;
+export type CardProps = Omit<AllProps, 'city'| 'location'>;
 
 export const AllOffers: AllProps[] = [
   {
@@ -149,7 +149,7 @@ export const CardOffers: CardProps[] = [
     'type': 'room',
     'price': 101,
     'previewImage': 'https://15.design.htmlacademy.pro/static/hotel/14.jpg',
-    //'isFavorite': false,
+    'isFavorite': true,
     'isPremium': false,
     'rating': 1.6
   },
@@ -159,7 +159,7 @@ export const CardOffers: CardProps[] = [
     'type': 'apartment',
     'price': 460,
     'previewImage': 'https://15.design.htmlacademy.pro/static/hotel/9.jpg',
-    //'isFavorite': false,
+    'isFavorite': false,
     'isPremium': false,
     'rating': 1.9
   },
@@ -169,7 +169,7 @@ export const CardOffers: CardProps[] = [
     'type': 'house',
     'price': 255,
     'previewImage': 'https://15.design.htmlacademy.pro/static/hotel/14.jpg',
-    //'isFavorite': false,
+    'isFavorite': false,
     'isPremium': false,
     'rating': 3.1
   },
@@ -179,7 +179,7 @@ export const CardOffers: CardProps[] = [
     'type': 'room',
     'price': 210,
     'previewImage': 'https://15.design.htmlacademy.pro/static/hotel/4.jpg',
-    //'isFavorite': false,
+    'isFavorite': false,
     'isPremium': true,
     'rating': 4.3
   },
@@ -189,7 +189,7 @@ export const CardOffers: CardProps[] = [
     'type': 'hotel',
     'price': 151,
     'previewImage': 'https://15.design.htmlacademy.pro/static/hotel/10.jpg',
-    //'isFavorite': false,
+    'isFavorite': false,
     'isPremium': true,
     'rating': 5
   }

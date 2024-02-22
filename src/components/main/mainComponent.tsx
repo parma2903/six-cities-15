@@ -47,8 +47,7 @@ function MainComponent({offerCardsCount}: MainProps): JSX.Element {
                 previewImage={cardOffer.previewImage}
                 price={cardOffer.price}
                 title={cardOffer.title}
-                //rating={offer.rating}
-                //isFavorite={offer.isFavorite}
+                isFavorite={cardOffer.isFavorite}
                 type={cardOffer.type}
                 rating={cardOffer.rating}
               />
