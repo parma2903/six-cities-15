@@ -1,5 +1,6 @@
-import OfferCard from '../offerCard/offerCard';
+import OfferCard from '../card/card';
 import { placeOptions } from '../../const';
+import { CardOffers } from '../../mock';
 
 type MainProps = {
   offerCardsCount: number;
@@ -33,11 +34,25 @@ function MainComponent({offerCardsCount}: MainProps): JSX.Element {
             </ul>
           </form>
           <div className="cities__places-list places__list tabs__content">
+            {/* <OfferCard />
             <OfferCard />
             <OfferCard />
             <OfferCard />
-            <OfferCard />
-            <OfferCard />
+            <OfferCard /> */}
+            {CardOffers.map((cardOffer) => (
+              <OfferCard
+                key={cardOffer.id}
+                id={cardOffer.id}
+                isPremium={cardOffer.isPremium}
+                previewImage={cardOffer.previewImage}
+                price={cardOffer.price}
+                title={cardOffer.title}
+                //rating={offer.rating}
+                //isFavorite={offer.isFavorite}
+                type={cardOffer.type}
+                rating={cardOffer.rating}
+              />
+            ))}
           </div>
         </section>
         <div className="cities__right-section">
