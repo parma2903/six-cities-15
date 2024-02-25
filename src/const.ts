@@ -18,4 +18,17 @@ const placeOptions: string[] = [
   'Top rated first'
 ];
 
-export { Setting, CITIES, placeOptions };
+enum AppRoute {
+  Main = '/',
+  Login = '/login',
+  Favorites = '/favorites',
+  Offer = '/offer/:id'
+}
+
+enum AuthorizationStatus {
+  Auth = 'AUTH',
+  NoAuth = 'NO_AUTH',
+  Unknown = 'UNKNOWN',
+}
+
+export { Setting, CITIES, placeOptions, AppRoute, AuthorizationStatus };
