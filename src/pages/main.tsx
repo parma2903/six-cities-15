@@ -1,12 +1,14 @@
 import Header from '../components/header/header';
 import MainComponent from '../components/main/mainComponent';
 import { CITIES } from '../const';
+import { CardProps } from '../mocks/offers';
 
 type MainProps = {
   offerCardsCount: number;
+  offers: CardProps[];
 }
 
-function MainScreen({offerCardsCount}: MainProps): JSX.Element {
+function MainScreen({offerCardsCount, offers}: MainProps): JSX.Element {
   return (
     <div className="page page--gray page--main">
       <header className="header">
@@ -27,7 +29,7 @@ function MainScreen({offerCardsCount}: MainProps): JSX.Element {
             </ul>
           </section>
         </div>
-        <MainComponent offerCardsCount={offerCardsCount}/>
+        <MainComponent offerCardsCount={offerCardsCount} offers={offers} />
       </main>
     </div>
   );

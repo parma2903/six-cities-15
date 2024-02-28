@@ -151,7 +151,7 @@ export const CardOffers: CardProps[] = [
     'previewImage': 'https://15.design.htmlacademy.pro/static/hotel/14.jpg',
     'isFavorite': true,
     'isPremium': false,
-    'rating': 1.6
+    'rating': 1.6,
   },
   {
     'id': 'b130506e-927f-4531-aedb-940ae5d979a1',
@@ -161,7 +161,7 @@ export const CardOffers: CardProps[] = [
     'previewImage': 'https://15.design.htmlacademy.pro/static/hotel/9.jpg',
     'isFavorite': false,
     'isPremium': false,
-    'rating': 1.9
+    'rating': 1.9,
   },
   {
     'id': 'd46049d1-e273-4a23-9e80-297c339ddd8f',
@@ -171,7 +171,7 @@ export const CardOffers: CardProps[] = [
     'previewImage': 'https://15.design.htmlacademy.pro/static/hotel/14.jpg',
     'isFavorite': false,
     'isPremium': false,
-    'rating': 3.1
+    'rating': 3.1,
   },
   {
     'id': 'e4e6eae4-e6f7-4de6-bc0f-94b729b9fd53',
@@ -181,7 +181,7 @@ export const CardOffers: CardProps[] = [
     'previewImage': 'https://15.design.htmlacademy.pro/static/hotel/4.jpg',
     'isFavorite': false,
     'isPremium': true,
-    'rating': 4.3
+    'rating': 4.3,
   },
   {
     'id': '69ebf2da-0aac-483a-9683-a068f55b81f1',
@@ -191,7 +191,7 @@ export const CardOffers: CardProps[] = [
     'previewImage': 'https://15.design.htmlacademy.pro/static/hotel/10.jpg',
     'isFavorite': false,
     'isPremium': true,
-    'rating': 5
+    'rating': 5,
   }
 ];
 

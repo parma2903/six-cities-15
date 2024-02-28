@@ -6,18 +6,20 @@ import FavoritesScreen from '../../pages/favorites';
 import OfferScreen from '../../pages/offer';
 import PrivateRoute from '../private-route/private-route';
 import NotFoundScreen from '../../pages/not-found';
+import { CardProps } from '../../mocks/offers';
 
 type AppScreenProps = {
   offerCardsCount: number;
+  offers: CardProps[];
 }
 
-function App({offerCardsCount}: AppScreenProps): JSX.Element {
+function App({offerCardsCount, offers}: AppScreenProps): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
         <Route
           path={AppRoute.Main}
-          element={<MainScreen offerCardsCount={offerCardsCount}/>}
+          element={<MainScreen offerCardsCount={offerCardsCount} offers={offers} />}
         />
         <Route
           path={AppRoute.Login}

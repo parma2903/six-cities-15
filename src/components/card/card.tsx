@@ -1,6 +1,7 @@
-import { CardProps } from '../../mock';
+import { CardProps } from '../../mocks/offers';
 
-function OfferCard({isPremium, previewImage, price, title, type, rating, isFavorite}: CardProps): JSX.Element {
+function OfferCard({isPremium, previewImage, price, title, type, rating, isFavorite }: CardProps): JSX.Element {
+
   return (
     <article className="cities__card place-card">
       {isPremium ? (

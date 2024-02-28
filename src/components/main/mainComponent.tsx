@@ -1,12 +1,13 @@
-import OfferCard from '../card/card';
+import ListCards from '../listCards/listCards';
 import { placeOptions } from '../../const';
-import { CardOffers } from '../../mock';
+import { CardProps } from '../../mocks/offers';
 
 type MainProps = {
   offerCardsCount: number;
+  offers: CardProps[];
 }
 
-function MainComponent({offerCardsCount}: MainProps): JSX.Element {
+function MainComponent({offerCardsCount, offers}: MainProps): JSX.Element {
   return (
     <div className="cities">
       <div className="cities__places-container container">
@@ -33,21 +34,22 @@ function MainComponent({offerCardsCount}: MainProps): JSX.Element {
               ))}
             </ul>
           </form>
-          <div className="cities__places-list places__list tabs__content">
-            {CardOffers.map((cardOffer) => (
+          <ListCards offers={offers} />
+          {/* <div className="cities__places-list places__list tabs__content">
+            {offers.map((offer) => (
               <OfferCard
-                key={cardOffer.id}
-                id={cardOffer.id}
-                isPremium={cardOffer.isPremium}
-                previewImage={cardOffer.previewImage}
-                price={cardOffer.price}
-                title={cardOffer.title}
-                isFavorite={cardOffer.isFavorite}
-                type={cardOffer.type}
-                rating={cardOffer.rating}
+                key={offer.id}
+                id={offer.id}
+                isPremium={offer.isPremium}
+                previewImage={offer.previewImage}
+                price={offer.price}
+                title={offer.title}
+                isFavorite={offer.isFavorite}
+                type={offer.type}
+                rating={offer.rating}
               />
             ))}
-          </div>
+          </div> */}
         </section>
         <div className="cities__right-section">
           <section className="cities__map map" />
