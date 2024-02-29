@@ -1,4 +1,5 @@
 import Header from '../header/header';
+import { Link } from 'react-router-dom';
 
 function FavoritesEmptyScreen(): JSX.Element {
   return (
@@ -20,7 +21,7 @@ function FavoritesEmptyScreen(): JSX.Element {
         </div>
       </main>
       <footer className="footer">
-        <a className="footer__logo-link" href="main.html">
+        <Link className="footer__logo-link" to="main.html">
           <img
             className="footer__logo"
             src="img/logo.svg"
@@ -28,7 +29,7 @@ function FavoritesEmptyScreen(): JSX.Element {
             width={64}
             height={33}
           />
-        </a>
+        </Link>
       </footer>
     </div>
   );

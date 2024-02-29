@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Header from '../components/header/header';
 import ListCardsFavorite from '../components/listCardsFavorite/listCardsFavorite';
 import { CardProps } from '../mocks/offers';
+import { Link } from 'react-router-dom';
 
 type FavouriteProps = {
   offers: CardProps[];
@@ -37,7 +38,7 @@ function FavoritesScreen({offers}: FavouriteProps): JSX.Element {
         </div>
       </main>
       <footer className="footer container">
-        <a className="footer__logo-link" href="main.html">
+        <Link className="footer__logo-link" to="main.html">
           <img
             className="footer__logo"
             src="img/logo.svg"
@@ -45,7 +46,7 @@ function FavoritesScreen({offers}: FavouriteProps): JSX.Element {
             width={64}
             height={33}
           />
-        </a>
+        </Link>
       </footer>
     </div>
   );

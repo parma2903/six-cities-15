@@ -1,4 +1,5 @@
 import { CardProps } from '../../mocks/offers';
+import { Link } from 'react-router-dom';
 
 type OfferCardProps = CardProps & {
   isActive?: boolean;
@@ -20,7 +21,7 @@ function OfferCard({isPremium, previewImage, price, title, type, rating, isFavor
         </div>
       ) : null}
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <a href="#">
+        <Link to="#">
           <img
             className="place-card__image"
             src={previewImage}
@@ -28,7 +29,7 @@ function OfferCard({isPremium, previewImage, price, title, type, rating, isFavor
             height={200}
             alt="Place image"
           />
-        </a>
+        </Link>
       </div>
       <div className="place-card__info">
         <div className="place-card__price-wrapper">
@@ -57,9 +58,9 @@ function OfferCard({isPremium, previewImage, price, title, type, rating, isFavor
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#">
+          <Link to="#">
             {title}
-          </a>
+          </Link>
         </h2>
         <p className="place-card__type">{type.charAt(0).toUpperCase() + type.slice(1)}</p>
       </div>

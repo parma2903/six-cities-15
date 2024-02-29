@@ -2,6 +2,7 @@ import Header from '../components/header/header';
 import MainComponent from '../components/main/mainComponent';
 import { CITIES } from '../const';
 import { CardProps } from '../mocks/offers';
+import { Link } from 'react-router-dom';
 
 type MainProps = {
   offerCardsCount: number;
@@ -21,9 +22,9 @@ function MainScreen({offerCardsCount, offers}: MainProps): JSX.Element {
             <ul className="locations__list tabs__list">
               {CITIES.map((city) => (
                 <li className="locations__item" key={city}>
-                  <a className="locations__item-link tabs__item" href="#">
+                  <Link className="locations__item-link tabs__item" to="#">
                     <span>{city}</span>
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
