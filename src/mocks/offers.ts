@@ -44,7 +44,7 @@ export const AllOffers: AllProps[] = [
       'longitude': 2.342499,
       'zoom': 16
     },
-    'isFavorite': false,
+    'isFavorite': true,
     'isPremium': false,
     'rating': 1.6
   },
@@ -136,7 +136,7 @@ export const AllOffers: AllProps[] = [
       'longitude': 2.375499,
       'zoom': 16
     },
-    'isFavorite': false,
+    'isFavorite': true,
     'isPremium': true,
     'rating': 5
   }
@@ -189,7 +189,7 @@ export const CardOffers: CardProps[] = [
     'type': 'hotel',
     'price': 151,
     'previewImage': 'https://15.design.htmlacademy.pro/static/hotel/10.jpg',
-    'isFavorite': false,
+    'isFavorite': true,
     'isPremium': true,
     'rating': 5,
   }
