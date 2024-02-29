@@ -1,9 +1,19 @@
 import { CardProps } from '../../mocks/offers';
 
-function OfferCard({isPremium, previewImage, price, title, type, rating, isFavorite }: CardProps): JSX.Element {
+type OfferCardProps = CardProps & {
+  isActive?: boolean;
+  onCardMouseEnter: () => void;
+  onCardMouseLeave: () => void;
+}
+
+function OfferCard({isPremium, previewImage, price, title, type, rating, isFavorite, isActive, onCardMouseEnter, onCardMouseLeave }: OfferCardProps): JSX.Element {
 
   return (
-    <article className="cities__card place-card">
+    <article
+      className={`cities__card place-card ${isActive ? 'place-card--active' : ''}`}
+      onMouseEnter={onCardMouseEnter}
+      onMouseLeave={onCardMouseLeave}
+    >
       {isPremium ? (
         <div className="place-card__mark">
           <span>Premium</span>

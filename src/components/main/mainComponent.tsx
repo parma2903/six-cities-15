@@ -1,6 +1,7 @@
 import ListCards from '../listCards/listCards';
 import { placeOptions } from '../../const';
 import { CardProps } from '../../mocks/offers';
+import { useState } from 'react';
 
 type MainProps = {
   offerCardsCount: number;
@@ -8,6 +9,16 @@ type MainProps = {
 }
 
 function MainComponent({offerCardsCount, offers}: MainProps): JSX.Element {
+  const [activeCardId, setActiveCard] = useState<string | null>(null);
+
+  const handleCardMouseEnter = (offerId: string) => {
+    setActiveCard(offerId);
+  };
+
+  const handleCardMouseLeave = () => {
+    setActiveCard(null);
+  };
+
   return (
     <div className="cities">
       <div className="cities__places-container container">
@@ -34,7 +45,12 @@ function MainComponent({offerCardsCount, offers}: MainProps): JSX.Element {
               ))}
             </ul>
           </form>
-          <ListCards offers={offers} />
+          <ListCards
+            offers={offers}
+            activeCardId={activeCardId}
+            onCardMouseEnter={handleCardMouseEnter}
+            onCardMouseLeave={handleCardMouseLeave}
+          />
           {/* <div className="cities__places-list places__list tabs__content">
             {offers.map((offer) => (
               <OfferCard
