@@ -35,7 +35,7 @@ function App({offerCardsCount, offers}: AppScreenProps): JSX.Element {
         />
         <Route
           path={AppRoute.Offer}
-          element={<OfferScreen/>}
+          element={<OfferScreen authorizationStatus={AuthorizationStatus.Auth} />}
         />
         <Route
           path='*'
