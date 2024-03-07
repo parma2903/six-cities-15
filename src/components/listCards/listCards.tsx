@@ -1,15 +1,15 @@
-import { CardProps } from '../../mocks/offers';
+//import { CardProps } from '../../mocks/offers';
+import { AllProps } from '../../mocks/offers';
 import OfferCard from '../card/card';
 
 type ListCardsProps = {
-  offers: CardProps[];
+  offers: AllProps[];
   activeCardId: string | null;
   onCardMouseEnter: (offerId: string) => void;
   onCardMouseLeave: () => void;
 }
 
 function ListCards({offers, activeCardId, onCardMouseEnter, onCardMouseLeave}: ListCardsProps): JSX.Element {
-
   return (
     <div className="cities__places-list places__list tabs__content">
       {offers.map((offer) => (

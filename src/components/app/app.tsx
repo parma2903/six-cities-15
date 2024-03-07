@@ -6,11 +6,11 @@ import FavoritesScreen from '../../pages/favorites';
 import OfferScreen from '../../pages/offer';
 import PrivateRoute from '../private-route/private-route';
 import NotFoundScreen from '../../pages/not-found';
-import { CardProps } from '../../mocks/offers';
+import { AllProps } from '../../mocks/offers';
 
 type AppScreenProps = {
   offerCardsCount: number;
-  offers: CardProps[];
+  offers: AllProps[];
 }
 
 function App({offerCardsCount, offers}: AppScreenProps): JSX.Element {

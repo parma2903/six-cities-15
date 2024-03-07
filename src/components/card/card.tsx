@@ -1,8 +1,9 @@
 import { AppRoute } from '../../const';
-import { CardProps } from '../../mocks/offers';
+//import { CardProps } from '../../mocks/offers';
+import { AllProps } from '../../mocks/offers';
 import { Link } from 'react-router-dom';
 
-type OfferCardProps = CardProps & {
+type OfferCardProps = AllProps & {
   isActive?: boolean;
   onCardMouseEnter: () => void;
   onCardMouseLeave: () => void;

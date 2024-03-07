@@ -1,8 +1,9 @@
-import { CardProps } from '../../mocks/offers';
+//import { CardProps } from '../../mocks/offers';
+import { AllProps } from '../../mocks/offers';
 import CardFavorite from '../cardFavorite/cardFavorite';
 
 type ListCardsFavoriteProps = {
-  offers: CardProps[];
+  offers: AllProps[];
   activeCardId: string | null;
   onCardMouseEnter: (offerId: string) => void;
   onCardMouseLeave: () => void;

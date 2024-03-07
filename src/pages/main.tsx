@@ -1,12 +1,13 @@
 import Header from '../components/header/header';
 import MainComponent from '../components/main/mainComponent';
 import { CITIES } from '../const';
-import { CardProps } from '../mocks/offers';
+//import { CardProps } from '../mocks/offers';
+import { AllProps } from '../mocks/offers';
 import { Link } from 'react-router-dom';
 
 type MainProps = {
   offerCardsCount: number;
-  offers: CardProps[];
+  offers: AllProps[];
 }
 
 function MainScreen({offerCardsCount, offers}: MainProps): JSX.Element {

@@ -1,22 +1,23 @@
 import { useState } from 'react';
 import Header from '../components/header/header';
 import ListCardsFavorite from '../components/listCardsFavorite/listCardsFavorite';
-import { CardProps } from '../mocks/offers';
+//import { CardProps } from '../mocks/offers';
+import { AllProps } from '../mocks/offers';
 import { Link } from 'react-router-dom';
 
 type FavouriteProps = {
-  offers: CardProps[];
+  offers: AllProps[];
 }
 
 function FavoritesScreen({offers}: FavouriteProps): JSX.Element {
-  const [activeCardId, setActiveCard] = useState<string | null>(null);
+  const [activeCardId, setActiveCardId] = useState<string | null>(null);
 
   function handleCardMouseEnter(offerId: string) {
-    setActiveCard(offerId);
+    setActiveCardId(offerId);
   }
 
   function handleCardMouseLeave() {
-    setActiveCard(null);
+    setActiveCardId(null);
   }
 
   return (

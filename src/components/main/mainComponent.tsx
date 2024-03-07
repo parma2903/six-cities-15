@@ -1,22 +1,25 @@
 import ListCards from '../listCards/listCards';
+import Map from '../map/map';
 import { placeOptions } from '../../const';
-import { CardProps } from '../../mocks/offers';
+//import { CardProps } from '../../mocks/offers';
+import { AllProps } from '../../mocks/offers';
 import { useState } from 'react';
+import { CITY } from '../../mocks/offers';
 
 type MainProps = {
   offerCardsCount: number;
-  offers: CardProps[];
+  offers: AllProps[];
 }
 
 function MainComponent({offerCardsCount, offers}: MainProps): JSX.Element {
-  const [activeCardId, setActiveCard] = useState<string | null>(null);
-
+  const [activeCardId, setActiveCardId] = useState<string | null>(null);
   const handleCardMouseEnter = (offerId: string) => {
-    setActiveCard(offerId);
+    const currentOffer = offers.find((offer) => offer.id === offerId);
+    setActiveCardId(currentOffer ? currentOffer.id : null);
   };
 
   const handleCardMouseLeave = () => {
-    setActiveCard(null);
+    setActiveCardId(null);
   };
 
   return (
@@ -51,24 +54,9 @@ function MainComponent({offerCardsCount, offers}: MainProps): JSX.Element {
             onCardMouseEnter={handleCardMouseEnter}
             onCardMouseLeave={handleCardMouseLeave}
           />
-          {/* <div className="cities__places-list places__list tabs__content">
-            {offers.map((offer) => (
-              <OfferCard
-                key={offer.id}
-                id={offer.id}
-                isPremium={offer.isPremium}
-                previewImage={offer.previewImage}
-                price={offer.price}
-                title={offer.title}
-                isFavorite={offer.isFavorite}
-                type={offer.type}
-                rating={offer.rating}
-              />
-            ))}
-          </div> */}
         </section>
         <div className="cities__right-section">
-          <section className="cities__map map" />
+          <Map city={CITY} offers={offers} activeCardId={activeCardId}/>
         </div>
       </div>
     </div>
