@@ -6,14 +6,15 @@ import FavoritesScreen from '../../pages/favorites';
 import OfferScreen from '../../pages/offer';
 import PrivateRoute from '../private-route/private-route';
 import NotFoundScreen from '../../pages/not-found';
-import { AllProps } from '../../mocks/offers';
+import { AllProps, ReviewProps } from '../../mocks/offers';
 
 type AppScreenProps = {
   offerCardsCount: number;
   offers: AllProps[];
+  reviews: ReviewProps[];
 }
 
-function App({offerCardsCount, offers}: AppScreenProps): JSX.Element {
+function App({offerCardsCount, offers, reviews}: AppScreenProps): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
@@ -35,7 +36,7 @@ function App({offerCardsCount, offers}: AppScreenProps): JSX.Element {
         />
         <Route
           path={AppRoute.Offer}
-          element={<OfferScreen authorizationStatus={AuthorizationStatus.Auth} />}
+          element={<OfferScreen authorizationStatus={AuthorizationStatus.Auth} reviews={reviews}/>}
         />
         <Route
           path='*'
