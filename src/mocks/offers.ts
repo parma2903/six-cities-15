@@ -219,6 +219,57 @@ export const CITY: CityProps = {
   }
 };
 
+export const CITIES: CityProps[] = [
+  {
+    name: 'Paris',
+    location: {
+      latitude: 48.8566,
+      longitude: 2.3522,
+      zoom: 10
+    }
+  },
+  {
+    name: 'Cologne',
+    location: {
+      latitude: 50.9375,
+      longitude: 6.9603,
+      zoom: 10
+    }
+  },
+  {
+    name: 'Brussels',
+    location: {
+      latitude: 50.8503,
+      longitude: 4.3517,
+      zoom: 10
+    }
+  },
+  {
+    name: 'Amsterdam',
+    location: {
+      latitude: 52.373100,
+      longitude: 4.893300,
+      zoom: 10
+    }
+  },
+  {
+    name: 'Hamburg',
+    location: {
+      latitude: 53.5511,
+      longitude: 9.9937,
+      zoom: 10
+    }
+  },
+  {
+    name: 'Dusseldorf',
+    location: {
+      latitude: 51.2277,
+      longitude: 6.7735,
+      zoom: 10
+    }
+  }
+];
+
 export const Reviews: ReviewProps[] = [
   {
     'id': 'b67ddfd5-b953-4a30-8c8d-bd083cd6b62a',
