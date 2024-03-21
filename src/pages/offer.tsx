@@ -12,9 +12,7 @@ type OfferProps = {
 function OfferScreen({authorizationStatus, reviews}: OfferProps): JSX.Element {
   return (
     <div className="page">
-      <header className="header">
-        <Header />
-      </header>
+      <Header />
       <main className="page__main page__main--offer">
         <section className="offer">
           <div className="offer__gallery-container container">

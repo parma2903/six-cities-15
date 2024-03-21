@@ -1,37 +1,19 @@
 import Header from '../components/header/header';
+import CitiesList from '../components/citiesList/citiesList';
 import MainComponent from '../components/main/mainComponent';
-import { CITIES } from '../const';
-//import { CardProps } from '../mocks/offers';
-import { AllProps } from '../mocks/offers';
-import { Link } from 'react-router-dom';
+import { CITIES } from '../mocks/offers';
+import { useAppSelector } from '../hooks/useApp';
 
-type MainProps = {
-  offerCardsCount: number;
-  offers: AllProps[];
-}
-
-function MainScreen({offerCardsCount, offers}: MainProps): JSX.Element {
+function MainScreen(): JSX.Element {
+  const offers = useAppSelector((state) => state.offers);
+  const currentCity = useAppSelector((state) => state.city);
+  const currentOffers = offers.filter((offer) => offer.city?.name === currentCity.name);
   return (
     <div className="page page--gray page--main">
-      <header className="header">
-        <Header />
-      </header>
+      <Header />
       <main className="page__main page__main--index">
-        <h1 className="visually-hidden">Cities</h1>
-        <div className="tabs">
-          <section className="locations container">
-            <ul className="locations__list tabs__list">
-              {CITIES.map((city) => (
-                <li className="locations__item" key={city}>
-                  <Link className="locations__item-link tabs__item" to="#">
-                    <span>{city}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </section>
-        </div>
-        <MainComponent offerCardsCount={offerCardsCount} offers={offers} />
+        <CitiesList cities={CITIES}/>
+        <MainComponent offers={currentOffers} city={currentCity} />
       </main>
     </div>
   );

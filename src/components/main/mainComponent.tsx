@@ -1,17 +1,15 @@
 import ListCards from '../listCards/listCards';
 import Map from '../map/map';
 import { placeOptions } from '../../const';
-//import { CardProps } from '../../mocks/offers';
-import { AllProps } from '../../mocks/offers';
+import { AllProps, CityProps } from '../../mocks/offers';
 import { useState } from 'react';
-import { CITY } from '../../mocks/offers';
 
 type MainProps = {
-  offerCardsCount: number;
+  city: CityProps;
   offers: AllProps[];
 }
 
-function MainComponent({offerCardsCount, offers}: MainProps): JSX.Element {
+function MainComponent({city, offers}: MainProps): JSX.Element {
   const [activeCardId, setActiveCardId] = useState<string | null>(null);
   const handleCardMouseEnter = (offerId: string) => {
     const currentOffer = offers.find((offer) => offer.id === offerId);
@@ -27,7 +25,7 @@ function MainComponent({offerCardsCount, offers}: MainProps): JSX.Element {
       <div className="cities__places-container container">
         <section className="cities__places places">
           <h2 className="visually-hidden">Places</h2>
-          <b className="places__found">{offerCardsCount} places to stay in Amsterdam</b>
+          <b className="places__found">{offers.length} places to stay in {city.name}</b>
           <form className="places__sorting" action="#" method="get">
             <span className="places__sorting-caption">Sort by</span>
             <span className="places__sorting-type" tabIndex={0}>
@@ -56,7 +54,7 @@ function MainComponent({offerCardsCount, offers}: MainProps): JSX.Element {
           />
         </section>
         <div className="cities__right-section">
-          <Map city={CITY} offers={offers} activeCardId={activeCardId}/>
+          <Map city={city} offers={offers} activeCardId={activeCardId}/>
         </div>
       </div>
     </div>

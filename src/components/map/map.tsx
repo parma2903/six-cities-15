@@ -1,7 +1,7 @@
 import { useRef, useEffect } from 'react';
 import leaflet, { Marker, layerGroup } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import useMap from '../../hooks/use-map';
+import useMap from '../../hooks/useMap';
 import {URL_MARKER_DEFAULT, URL_MARKER_CURRENT} from '../../const';
 import { AllProps, CityProps } from '../../mocks/offers';
 
@@ -51,6 +51,12 @@ function Map({city, offers, activeCardId}: MapProps) {
       };
     }
   }, [map, offers, activeCardId]);
+
+  useEffect(() => {
+    if (map) {
+      map.setView([city.location.latitude, city.location.longitude], city.location.zoom);
+    }
+  }, [map, city]);
 
   return (
     <section

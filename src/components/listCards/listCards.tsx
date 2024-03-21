@@ -1,4 +1,3 @@
-//import { CardProps } from '../../mocks/offers';
 import { AllProps } from '../../mocks/offers';
 import OfferCard from '../card/card';
 

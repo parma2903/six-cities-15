@@ -1,15 +1,12 @@
 import { useState } from 'react';
 import Header from '../components/header/header';
 import ListCardsFavorite from '../components/listCardsFavorite/listCardsFavorite';
-//import { CardProps } from '../mocks/offers';
-import { AllProps } from '../mocks/offers';
 import { Link } from 'react-router-dom';
+import { useAppSelector } from '../hooks/useApp';
 
-type FavouriteProps = {
-  offers: AllProps[];
-}
-
-function FavoritesScreen({offers}: FavouriteProps): JSX.Element {
+function FavoritesScreen(): JSX.Element {
+  const offers = useAppSelector((state) => state.offers);
+  const favoriteOffers = offers.filter((offer) => offer.isFavorite);
   const [activeCardId, setActiveCardId] = useState<string | null>(null);
 
   function handleCardMouseEnter(offerId: string) {
@@ -22,15 +19,13 @@ function FavoritesScreen({offers}: FavouriteProps): JSX.Element {
 
   return (
     <div className="page">
-      <header className="header">
-        <Header />
-      </header>
+      <Header />
       <main className="page__main page__main--favorites">
         <div className="page__favorites-container container">
           <section className="favorites">
             <h1 className="favorites__title">Saved listing</h1>
             <ListCardsFavorite
-              offers={offers}
+              offers={favoriteOffers}
               activeCardId={activeCardId}
               onCardMouseEnter={handleCardMouseEnter}
               onCardMouseLeave={handleCardMouseLeave}
