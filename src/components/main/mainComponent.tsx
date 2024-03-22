@@ -1,8 +1,9 @@
 import ListCards from '../listCards/listCards';
 import Map from '../map/map';
-import { placeOptions } from '../../const';
 import { AllProps, CityProps } from '../../mocks/offers';
 import { useState } from 'react';
+import Sort from '../sort/sort';
+import { SortOption } from '../../const';
 
 type MainProps = {
   city: CityProps;
@@ -11,6 +12,8 @@ type MainProps = {
 
 function MainComponent({city, offers}: MainProps): JSX.Element {
   const [activeCardId, setActiveCardId] = useState<string | null>(null);
+  const [activeSort, setActiveSort] = useState(SortOption.Popular);
+
   const handleCardMouseEnter = (offerId: string) => {
     const currentOffer = offers.find((offer) => offer.id === offerId);
     setActiveCardId(currentOffer ? currentOffer.id : null);
@@ -20,34 +23,29 @@ function MainComponent({city, offers}: MainProps): JSX.Element {
     setActiveCardId(null);
   };
 
+  let sortedOffers = offers;
+
+  if (activeSort === SortOption.PriceLowToHigh) {
+    sortedOffers = offers.toSorted((a, b) => a.price - b.price);
+  }
+
+  if (activeSort === SortOption.PriceHighToLow) {
+    sortedOffers = offers.toSorted((a, b) => b.price - a.price);
+  }
+
+  if (activeSort === SortOption.TopRatedFirst) {
+    sortedOffers = offers.toSorted((a, b) => b.rating - a.rating);
+  }
+
   return (
     <div className="cities">
       <div className="cities__places-container container">
         <section className="cities__places places">
           <h2 className="visually-hidden">Places</h2>
-          <b className="places__found">{offers.length} places to stay in {city.name}</b>
-          <form className="places__sorting" action="#" method="get">
-            <span className="places__sorting-caption">Sort by</span>
-            <span className="places__sorting-type" tabIndex={0}>
-              Popular
-              <svg className="places__sorting-arrow" width={7} height={4}>
-                <use xlinkHref="#icon-arrow-select" />
-              </svg>
-            </span>
-            <ul className="places__options places__options--custom places__options--opened">
-              {placeOptions.map((place) => (
-                <li
-                  key={place}
-                  className="places__option places__option--active"
-                  tabIndex={0}
-                >
-                  {place}
-                </li>
-              ))}
-            </ul>
-          </form>
+          <b className="places__found">{offers.length} place{offers.length > 1 && 's' || offers.length === 0 && 's'} to stay in {city.name}</b>
+          <Sort current={activeSort} setter={setActiveSort} />
           <ListCards
-            offers={offers}
+            offers={sortedOffers}
             activeCardId={activeCardId}
             onCardMouseEnter={handleCardMouseEnter}
             onCardMouseLeave={handleCardMouseLeave}
