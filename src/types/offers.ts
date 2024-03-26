@@ -4,7 +4,7 @@ type LocationProps ={
   zoom: number;
 };
 
-type CityProps = {
+export type CityProps = {
   name: string;
   location: LocationProps;
 };
