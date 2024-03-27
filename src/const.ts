@@ -39,11 +39,13 @@ const enum SortOption {
   TopRatedFirst = 3
 }
 
-export enum APIRoute {
+const enum APIRoute {
   Comments ='/comments',
   Offers = '/offers',
   Login = '/login',
   Logout = '/logout'
 }
 
-export { CITIES, placeOptions, AppRoute, AuthorizationStatus, SORT_OPTIONS, SortOption };
+const TIMEOUT_SHOW_ERROR = 2000;
+
+export { CITIES, placeOptions, AppRoute, AuthorizationStatus, SORT_OPTIONS, SortOption, APIRoute, TIMEOUT_SHOW_ERROR };
