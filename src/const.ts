@@ -39,4 +39,11 @@ const enum SortOption {
   TopRatedFirst = 3
 }
 
+export enum APIRoute {
+  Comments ='/comments',
+  Offers = '/offers',
+  Login = '/login',
+  Logout = '/logout'
+}
+
 export { CITIES, placeOptions, AppRoute, AuthorizationStatus, SORT_OPTIONS, SortOption };
