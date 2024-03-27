@@ -8,3 +8,4 @@ export const setOffers = createAction('SET_OFFERS', (offers: AllProps[]) => ({ p
 export const loadOffers = createAction<Offers>('data/loadQuestions');
 export const requireAuthorization = createAction<AuthorizationStatus>('user/requireAuthorization');
 export const setError = createAction<string | null>('SET_ERROR');
+export const setOffersDataLoadingStatus = createAction<boolean>('data/setOffersDataLoadingStatus');

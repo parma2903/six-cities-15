@@ -7,12 +7,22 @@ import OfferScreen from '../../pages/offer';
 import PrivateRoute from '../private-route/private-route';
 import NotFoundScreen from '../../pages/not-found';
 import { ReviewProps } from '../../mocks/offers';
+import { useAppSelector } from '../../hooks/useApp';
+import LoadingScreen from '../loadingScreen/loadingScreen';
 
 type AppScreenProps = {
   reviews: ReviewProps[];
 }
 
 function App({reviews}: AppScreenProps): JSX.Element {
+  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
+  const isOffersDataLoading: boolean = useAppSelector((state) => state.isOffersDataLoading);
+
+  if (authorizationStatus === AuthorizationStatus.Unknown || isOffersDataLoading) {
+    return (
+      <LoadingScreen />
+    );
+  }
   return (
     <BrowserRouter>
       <Routes>
@@ -27,7 +37,7 @@ function App({reviews}: AppScreenProps): JSX.Element {
         <Route
           path={AppRoute.Favorites}
           element={
-            <PrivateRoute authorizationStatus={AuthorizationStatus.Auth} >
+            <PrivateRoute authorizationStatus={authorizationStatus} >
               <FavoritesScreen />
             </PrivateRoute>
           }
