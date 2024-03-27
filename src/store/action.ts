@@ -7,3 +7,4 @@ export const setCity = createAction('SET_CITY', (city: CityProps) => ({ payload:
 export const setOffers = createAction('SET_OFFERS', (offers: AllProps[]) => ({ payload: offers, }));
 export const loadOffers = createAction<Offers>('data/loadQuestions');
 export const requireAuthorization = createAction<AuthorizationStatus>('user/requireAuthorization');
+export const setError = createAction<string | null>('SET_ERROR');
