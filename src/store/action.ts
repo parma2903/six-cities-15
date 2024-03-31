@@ -5,8 +5,8 @@ import { AppRoute, AuthorizationStatus } from '../const';
 
 export const setCity = createAction('SET_CITY', (city: CityProps) => ({ payload: city, }));
 export const setOffers = createAction('SET_OFFERS', (offers: AllProps[]) => ({ payload: offers, }));
-export const loadOffers = createAction<Offers>('data/loadQuestions');
-export const requireAuthorization = createAction<AuthorizationStatus>('user/requireAuthorization');
-export const setError = createAction<string | null>('SET_ERROR');
-export const setOffersDataLoadingStatus = createAction<boolean>('data/setOffersDataLoadingStatus');
+export const loadOffers = createAction<Offers>('loadOffers');
+export const requireAuthorization = createAction<AuthorizationStatus>('requireAuthorization');
+export const setError = createAction<string | null>('setError');
+export const setOffersDataLoadingStatus = createAction<boolean>('setOffersDataLoadingStatus');
 export const redirectToRoute = createAction<AppRoute>('redirectToRoute');
