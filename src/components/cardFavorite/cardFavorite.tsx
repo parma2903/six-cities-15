@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-//import { CardProps } from '../../mocks/offers';
 import { AllProps } from '../../mocks/offers';
 
 type CardFavoriteProps = AllProps & {
