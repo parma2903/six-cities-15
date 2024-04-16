@@ -4,6 +4,7 @@ import MainComponent from '../components/main/mainComponent';
 import MainEmptyComponent from '../components/main-empty/main-empty';
 import { CITIES } from '../mocks/offers';
 import { useAppSelector } from '../hooks/useApp';
+import { useMemo } from 'react';
 
 function MainScreen(): JSX.Element {
   const offers = useAppSelector((state) => state.offers);

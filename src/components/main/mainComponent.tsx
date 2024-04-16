@@ -1,7 +1,7 @@
 import ListCards from '../listCards/listCards';
 import Map from '../map/map';
 import { AllProps, CityProps } from '../../mocks/offers';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import Sort from '../sort/sort';
 import { SortOption } from '../../const';
 
@@ -14,14 +14,14 @@ function MainComponent({city, offers}: MainProps): JSX.Element {
   const [activeCardId, setActiveCardId] = useState<string | null>(null);
   const [activeSort, setActiveSort] = useState(SortOption.Popular);
 
-  const handleCardMouseEnter = (offerId: string) => {
+  const handleCardMouseEnter = useCallback((offerId: string) => {
     const currentOffer = offers.find((offer) => offer.id === offerId);
     setActiveCardId(currentOffer ? currentOffer.id : null);
-  };
+  }, []);
 
-  const handleCardMouseLeave = () => {
+  const handleCardMouseLeave = useCallback(() => {
     setActiveCardId(null);
-  };
+  }, []);
 
   let sortedOffers = offers;
 

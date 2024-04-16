@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import {useRef, FormEvent} from 'react';
+import {useRef, FormEvent, useCallback} from 'react';
 import { useAppDispatch } from '../hooks/useApp';
 import { loginAction } from '../store/api-actions';
 import { AuthData } from '../types/authData';
@@ -13,7 +13,7 @@ function LoginScreen(): JSX.Element {
     dispatch(loginAction(authData));
   };
 
-  const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = useCallback((evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
 
     if (loginRef.current !== null && passwordRef.current !== null) {
@@ -22,7 +22,7 @@ function LoginScreen(): JSX.Element {
         password: passwordRef.current.value
       });
     }
-  };
+  }, []);
 
   return (
     <div className="page page--gray page--login">
