@@ -1,10 +1,10 @@
-import { CityProps } from '../../mocks/offers';
-import { setCity } from '../../store/action';
+import { Cities } from '../../types/offers';
+import { setCity } from '../../store/offers/offers';
 import { useAppDispatch } from '../../hooks/useApp';
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
 
-type CitiesListProps = { cities: CityProps[]};
+type CitiesListProps = { cities: Cities};
 
 function CitiesList({cities}: CitiesListProps): JSX.Element {
   const dispatch = useAppDispatch();

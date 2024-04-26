@@ -3,9 +3,10 @@ import Header from '../components/header/header';
 import ListCardsFavorite from '../components/listCardsFavorite/listCardsFavorite';
 import { Link } from 'react-router-dom';
 import { useAppSelector } from '../hooks/useApp';
+import { getOffers } from '../store/offers/selectors';
 
 function FavoritesScreen(): JSX.Element {
-  const offers = useAppSelector((state) => state.offers);
+  const offers = useAppSelector(getOffers);
   const favoriteOffers = offers.filter((offer) => offer.isFavorite);
   const [activeCardId, setActiveCardId] = useState<string | null>(null);
 

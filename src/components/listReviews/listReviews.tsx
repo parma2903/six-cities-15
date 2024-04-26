@@ -1,16 +1,15 @@
-import { ReviewProps } from '../../mocks/offers';
-import Review from '../review/review';
+import { Reviews } from '../../types/offers';
+import ReviewItem from '../reviewItem/reviewItem';
 
 type ReviewListProps = {
-  reviews: ReviewProps[];
+  reviews: Reviews;
 }
 
 function ListReviews({reviews}: ReviewListProps): JSX.Element {
   return (
     <ul className="reviews__list">
-      {/* <Review reviews={reviews} /> */}
       {reviews.map((review) => (
-        <Review
+        <ReviewItem
           key={review.id}
           review={review}
         />

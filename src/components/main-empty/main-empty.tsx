@@ -1,6 +1,6 @@
-import { CityProps } from '../../types/offers';
+import { City } from '../../types/offers';
 type MainEmptyProps = {
-  city: CityProps;
+  city: City;
 }
 
 function MainEmptyComponent({city}: MainEmptyProps): JSX.Element {

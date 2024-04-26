@@ -1,8 +1,8 @@
-import { AllProps } from '../../mocks/offers';
+import { Offers } from '../../types/offers';
 import OfferCard from '../card/card';
 
 type ListCardsProps = {
-  offers: AllProps[];
+  offers: Offers;
   activeCardId: string | null;
   onCardMouseEnter: (offerId: string) => void;
   onCardMouseLeave: () => void;
@@ -14,14 +14,7 @@ function ListCards({offers, activeCardId, onCardMouseEnter, onCardMouseLeave}: L
       {offers.map((offer) => (
         <OfferCard
           key={offer.id}
-          id={offer.id}
-          isPremium={offer.isPremium}
-          previewImage={offer.previewImage}
-          price={offer.price}
-          title={offer.title}
-          isFavorite={offer.isFavorite}
-          type={offer.type}
-          rating={offer.rating}
+          offer = {offer}
           isActive={offer.id === activeCardId}
           onCardMouseEnter={() => onCardMouseEnter(offer.id)}
           onCardMouseLeave={onCardMouseLeave}

@@ -1,10 +1,10 @@
-import { ReviewProps } from '../../mocks/offers';
+import { Review } from '../../types/offers';
 
 type ReviewMainProps = {
-  review: ReviewProps;
+  review: Review;
 }
 
-function Review({review}: ReviewMainProps): JSX.Element {
+function ReviewItem ({review}: ReviewMainProps): JSX.Element {
   const { comment, user, rating, date} = review;
   const { name, avatarUrl } = user;
   return (
@@ -39,4 +39,4 @@ function Review({review}: ReviewMainProps): JSX.Element {
   );
 }
 
-export default Review;
+export default ReviewItem;

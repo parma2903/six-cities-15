@@ -1,12 +1,12 @@
 import ListReviews from '../listReviews/listReviews';
 import ReviewForm from '../reviewForm/reviewForm';
-import { ReviewProps } from '../../mocks/offers';
+import { Reviews } from '../../types/offers';
 
 type ReviewsProps = {
   isAuth: boolean;
-  reviews: ReviewProps[];
+  reviews: Reviews;
 }
-function Reviews({isAuth, reviews}: ReviewsProps): JSX.Element {
+function ReviewBlock({isAuth, reviews}: ReviewsProps): JSX.Element {
   return (
     <>
       <ListReviews reviews={reviews}/>
@@ -16,4 +16,4 @@ function Reviews({isAuth, reviews}: ReviewsProps): JSX.Element {
   );
 }
 
-export default Reviews;
+export default ReviewBlock;

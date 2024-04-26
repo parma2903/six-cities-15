@@ -3,10 +3,10 @@ import SignOutButton from '../signOutButton/signOutButton';
 import { useAppSelector } from '../../hooks/useApp';
 import { AppRoute, AuthorizationStatus } from '../../const';
 import { NavLink } from 'react-router-dom';
-import { memo } from 'react';
+import { getAuthorizationStatus } from '../../store/user/selectors';
 
 function Header(): JSX.Element {
-  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
+  const authorizationStatus = useAppSelector(getAuthorizationStatus);
   const isLoggedIn = authorizationStatus === AuthorizationStatus.Auth;
 
   return (
@@ -60,4 +60,4 @@ function Header(): JSX.Element {
   );
 }
 
-export default memo(Header);
+export default Header;

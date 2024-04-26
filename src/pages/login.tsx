@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import {useRef, FormEvent, useCallback} from 'react';
 import { useAppDispatch } from '../hooks/useApp';
 import { loginAction } from '../store/api-actions';
-import { AuthData } from '../types/authData';
+import { AuthData } from '../types/offers';
 
 function LoginScreen(): JSX.Element {
   const loginRef = useRef<HTMLInputElement | null>(null);

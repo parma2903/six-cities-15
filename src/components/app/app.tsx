@@ -6,19 +6,21 @@ import FavoritesScreen from '../../pages/favorites';
 import OfferScreen from '../../pages/offer';
 import PrivateRoute from '../private-route/private-route';
 import NotFoundScreen from '../../pages/not-found';
-import { ReviewProps } from '../../mocks/offers';
+import { Reviews } from '../../types/offers';
 import { useAppSelector } from '../../hooks/useApp';
 import LoadingScreen from '../loadingScreen/loadingScreen';
 import HistoryRouter from '../historyRoute/historyRoute';
 import browserHistory from '../../browserHistory';
+import { getAuthorizationStatus } from '../../store/user/selectors';
+import { getOffersDataLoadingStatus } from '../../store/offers/selectors';
 
 type AppScreenProps = {
-  reviews: ReviewProps[];
+  reviews: Reviews;
 }
 
 function App({reviews}: AppScreenProps): JSX.Element {
-  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
-  const isOffersDataLoading: boolean = useAppSelector((state) => state.isOffersDataLoading);
+  const authorizationStatus = useAppSelector(getAuthorizationStatus);
+  const isOffersDataLoading: boolean = useAppSelector(getOffersDataLoadingStatus);
 
   if (authorizationStatus === AuthorizationStatus.Unknown || isOffersDataLoading) {
     return (

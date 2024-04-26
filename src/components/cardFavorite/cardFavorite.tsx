@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import { AllProps } from '../../mocks/offers';
+import { Offer } from '../../types/offers';
 
-type CardFavoriteProps = AllProps & {
+type CardFavoriteProps = Offer & {
   isActive?: boolean;
   onCardMouseEnter: () => void;
   onCardMouseLeave: () => void;

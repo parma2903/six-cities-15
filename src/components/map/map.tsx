@@ -3,11 +3,11 @@ import leaflet, { Marker, layerGroup } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import useMap from '../../hooks/useMap';
 import {URL_MARKER_DEFAULT, URL_MARKER_CURRENT} from '../../const';
-import { AllProps, CityProps } from '../../mocks/offers';
+import { Offers, City } from '../../types/offers';
 
 type MapProps = {
-  city: CityProps;
-  offers: AllProps[];
+  city: City;
+  offers: Offers;
   activeCardId: string | null;
 }
 

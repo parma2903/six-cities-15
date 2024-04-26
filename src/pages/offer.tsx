@@ -1,12 +1,12 @@
 import Header from '../components/header/header';
 import { Link } from 'react-router-dom';
-import Reviews from '../components/reviews/reviews';
+import ReviewBlock from '../components/reviewBlock/reviewBlock';
 import { AuthorizationStatus } from '../const';
-import { ReviewProps } from '../mocks/offers';
+import { Reviews } from '../types/offers';
 
 type OfferProps = {
   authorizationStatus: AuthorizationStatus;
-  reviews: ReviewProps[];
+  reviews: Reviews;
 }
 
 function OfferScreen({authorizationStatus, reviews}: OfferProps): JSX.Element {
@@ -144,7 +144,7 @@ function OfferScreen({authorizationStatus, reviews}: OfferProps): JSX.Element {
                 <h2 className="reviews__title">
                   Reviews · <span className="reviews__amount">{reviews.length}</span>
                 </h2>
-                <Reviews isAuth={authorizationStatus === AuthorizationStatus.Auth} reviews={reviews} />
+                <ReviewBlock isAuth={authorizationStatus === AuthorizationStatus.Auth} reviews={reviews} />
               </section>
             </div>
           </div>

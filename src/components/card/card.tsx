@@ -1,15 +1,17 @@
 import { AppRoute } from '../../const';
-import { AllProps } from '../../mocks/offers';
+import { Offer } from '../../types/offers';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
-type OfferCardProps = AllProps & {
+type OfferCardProps = {
+  offer: Offer;
   isActive?: boolean;
   onCardMouseEnter: () => void;
   onCardMouseLeave: () => void;
 }
 
-function OfferCard({id, isPremium, previewImage, price, title, type, rating, isFavorite, isActive, onCardMouseEnter, onCardMouseLeave }: OfferCardProps): JSX.Element {
+function OfferCard({offer, isActive, onCardMouseEnter, onCardMouseLeave }: OfferCardProps): JSX.Element {
+  const { id, title, type, price, isFavorite, isPremium, rating, previewImage } = offer;
   const [isFavoriteCard, setIsFavoriteCard] = useState(isFavorite);
   return (
     <article
