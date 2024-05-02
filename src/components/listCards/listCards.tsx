@@ -4,11 +4,10 @@ import OfferCard from '../card/card';
 type ListCardsProps = {
   offers: Offers;
   activeCardId: string | null;
-  onCardMouseEnter: (offerId: string) => void;
-  onCardMouseLeave: () => void;
+  setCardHoverId(id: string | null): void;
 }
 
-function ListCards({offers, activeCardId, onCardMouseEnter, onCardMouseLeave}: ListCardsProps): JSX.Element {
+function ListCards({offers, activeCardId, setCardHoverId}: ListCardsProps): JSX.Element {
   return (
     <div className="cities__places-list places__list tabs__content">
       {offers.map((offer) => (
@@ -16,8 +15,7 @@ function ListCards({offers, activeCardId, onCardMouseEnter, onCardMouseLeave}: L
           key={offer.id}
           offer = {offer}
           isActive={offer.id === activeCardId}
-          onCardMouseEnter={() => onCardMouseEnter(offer.id)}
-          onCardMouseLeave={onCardMouseLeave}
+          setCardHoverId ={setCardHoverId}
         />
       ))}
     </div>

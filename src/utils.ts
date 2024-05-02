@@ -1,4 +1,4 @@
-import { Offers, Cities, City } from './types/offers';
+import { Offers, Cities, City, Reviews } from './types/offers';
 import { SORTING_OPTIONS } from './const';
 
 export function getCitiesFromOffers(offers: Offers): Cities {
@@ -34,4 +34,19 @@ export function offersSorting(type: string, list: Offers) {
     default:
       return list;
   }
+}
+
+export const getOfferId = (offerId: string, offers: Offers): string | null => {
+  const foundOffer = offers.find((offer) => offer.id === offerId);
+  return foundOffer ? foundOffer.id : null;
+};
+
+export const setRatingStars = (rating: number): string => `${(Math.round(rating) * 100 / 5)}%`;
+
+export function sortReviewsByDate(reviews: Reviews): Reviews {
+  return reviews.slice().sort((a,b) => {
+    const dateA = new Date(a.date).getTime();
+    const dateB = new Date(b.date).getTime();
+    return dateB - dateA;
+  });
 }

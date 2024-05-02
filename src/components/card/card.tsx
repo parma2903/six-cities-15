@@ -6,18 +6,30 @@ import { useState } from 'react';
 type OfferCardProps = {
   offer: Offer;
   isActive?: boolean;
-  onCardMouseEnter: () => void;
-  onCardMouseLeave: () => void;
+  setCardHoverId?(id: string | null): void;
 }
 
-function OfferCard({offer, isActive, onCardMouseEnter, onCardMouseLeave }: OfferCardProps): JSX.Element {
+function OfferCard({offer, isActive, setCardHoverId }: OfferCardProps): JSX.Element {
   const { id, title, type, price, isFavorite, isPremium, rating, previewImage } = offer;
   const [isFavoriteCard, setIsFavoriteCard] = useState(isFavorite);
+
+  const handleCardMouseEnter = () => {
+    if (setCardHoverId) {
+      setCardHoverId(id);
+    }
+  };
+
+  const handleCardMouseLeave = () => {
+    if (setCardHoverId) {
+      setCardHoverId(null);
+    }
+  };
+
   return (
     <article
       className={`cities__card place-card ${isActive ? 'place-card--active' : ''}`}
-      onMouseEnter={onCardMouseEnter}
-      onMouseLeave={onCardMouseLeave}
+      onMouseEnter={handleCardMouseEnter}
+      onMouseLeave={handleCardMouseLeave}
     >
       {isPremium ? (
         <div className="place-card__mark">

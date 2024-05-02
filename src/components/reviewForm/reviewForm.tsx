@@ -1,4 +1,8 @@
-import { Fragment, ReactEventHandler, useState } from 'react';
+import { Fragment, ReactEventHandler, useEffect, useState, FormEvent } from 'react';
+import { useAppDispatch, useAppSelector } from '../../hooks/useApp';
+import { FetchStatus, REVIEW_INITIAL_STATE, MIN_COMMENT_LENGTH, MAX_COMMENT_LENGTH } from '../../const';
+import { getReviewsStatus } from '../../store/review/selectors';
+import { submitCommentAction } from '../../store/api-actions';
 
 type ChangeHandler = ReactEventHandler<HTMLInputElement | HTMLTextAreaElement>
 
@@ -10,19 +14,45 @@ const rating = [
   {value: 1, label: 'perfect'},
 ];
 
-function ReviewForm(): JSX.Element {
-  const [review, setReview] = useState({rating: 0, review: ''});
+type ReviewFormProps = {
+  offerId?: string;
+}
+
+function ReviewForm({ offerId }: ReviewFormProps): JSX.Element {
+  const dispatch = useAppDispatch();
+  const [formData, setFormData] = useState(REVIEW_INITIAL_STATE);
+  const reviewStatus = useAppSelector(getReviewsStatus);
+  const isSubmitting = reviewStatus === FetchStatus.Loading;
+  const isSubmitDisabled = formData.comment.length < MIN_COMMENT_LENGTH || formData.comment.length > MAX_COMMENT_LENGTH || formData.rating === REVIEW_INITIAL_STATE.rating || isSubmitting;
+
+  useEffect(() => {
+    if (reviewStatus === FetchStatus.None) {
+      setFormData(REVIEW_INITIAL_STATE);
+    }
+  }, [reviewStatus]);
 
   const handleChange: ChangeHandler = (evt) => {
     const { name, value } = evt.currentTarget;
-    setReview({...review, [name]: value});
+    setFormData({...formData, [name]: value});
+  };
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    if (offerId && !isSubmitDisabled) {
+      dispatch(
+        submitCommentAction({
+          id: offerId,
+          comment: formData.comment,
+          rating: formData.rating,
+        })
+      );
+    }
   };
 
   return (
-    <form className="reviews__form form" action="#" method="post">
-      <label className="reviews__label form__label" htmlFor="review">
-        Your review
-      </label>
+    <form className="reviews__form form" action="#" method="post" onSubmit ={handleSubmit}>
+      <label className="reviews__label form__label" htmlFor="review">Your review</label>
       <div className="reviews__rating-form form__rating">
         {rating.map(({value, label}) => (
           <Fragment key={value}>
@@ -57,16 +87,15 @@ function ReviewForm(): JSX.Element {
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
           To submit review please make sure to set{' '}
-          <span className="reviews__star">rating</span> and describe
-          your stay with at least{' '}
-          <b className="reviews__text-amount">50 characters</b>.
+          <span className="reviews__star">rating</span> and describe your stay with at least{' '}
+          <b className="reviews__text-amount">{MIN_COMMENT_LENGTH} characters</b>.
         </p>
         <button
           className="reviews__submit form__submit button"
           type="submit"
-          disabled={review.review.length < 50 || review.rating === 0 }
+          disabled={isSubmitDisabled}
         >
-          Submit
+          {isSubmitting ? 'Submitting...' : 'Submit'}
         </button>
       </div>
     </form>

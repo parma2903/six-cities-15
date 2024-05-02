@@ -2,7 +2,6 @@ import Header from '../components/header/header';
 import CitiesList from '../components/citiesList/citiesList';
 import MainComponent from '../components/main/mainComponent';
 import MainEmptyComponent from '../components/main-empty/main-empty';
-import { CITIES } from '../types/offers';
 import { useAppSelector } from '../hooks/useApp';
 import { getCity, getOffers } from '../store/offers/selectors';
 
@@ -14,9 +13,8 @@ function MainScreen(): JSX.Element {
     <div className="page page--gray page--main">
       <Header />
       <main className="page__main page__main--index">
-        <CitiesList cities={CITIES}/>
-        {currentOffers.length === 0 ? <MainEmptyComponent city={currentCity}/> : <MainComponent offers={currentOffers} city={currentCity} />}
-
+        <CitiesList />
+        {currentOffers.length === 0 ? <MainEmptyComponent city={currentCity}/> : <MainComponent />}
       </main>
     </div>
   );

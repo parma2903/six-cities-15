@@ -1,24 +1,18 @@
 import ListCards from '../listCards/listCards';
 import Map from '../map/map';
-import { Offers, City } from '../../types/offers';
 import { useCallback, useState } from 'react';
 import Sort from '../sort/sort';
+import { useAppSelector } from '../../hooks/useApp';
+import { getCity, getOffersByCity } from '../../store/offers/selectors';
+import { getOfferId } from '../../utils';
 
-type MainProps = {
-  city: City;
-  offers: Offers;
-}
-
-function MainComponent({city, offers}: MainProps): JSX.Element {
+function MainComponent(): JSX.Element {
   const [activeCardId, setActiveCardId] = useState<string | null>(null);
+  const offersByCity = useAppSelector(getOffersByCity);
+  const city = useAppSelector(getCity);
 
-  const handleCardMouseEnter = useCallback((offerId: string) => {
-    const currentOffer = offers.find((offer) => offer.id === offerId);
-    setActiveCardId(currentOffer ? currentOffer.id : null);
-  }, []);
-
-  const handleCardMouseLeave = useCallback(() => {
-    setActiveCardId(null);
+  const handleCardHover = useCallback((offerId: string) => {
+    setActiveCardId(getOfferId(offerId, offersByCity));
   }, []);
 
   return (
@@ -26,17 +20,16 @@ function MainComponent({city, offers}: MainProps): JSX.Element {
       <div className="cities__places-container container">
         <section className="cities__places places">
           <h2 className="visually-hidden">Places</h2>
-          <b className="places__found">{offers.length} place{offers.length > 1 && 's' || offers.length === 0 && 's'} to stay in {city.name}</b>
+          <b className="places__found">{offersByCity.length} place{offersByCity.length > 1 && 's' || offersByCity.length === 0 && 's'} to stay in {city.name}</b>
           <Sort />
           <ListCards
-            offers={offers}
+            offers={offersByCity}
             activeCardId={activeCardId}
-            onCardMouseEnter={handleCardMouseEnter}
-            onCardMouseLeave={handleCardMouseLeave}
+            setCardHoverId={handleCardHover}
           />
         </section>
         <div className="cities__right-section">
-          <Map city={city} offers={offers} activeCardId={activeCardId}/>
+          <Map className={'cities__map map'} city={city} offers={offersByCity} activeCardId={activeCardId}/>
         </div>
       </div>
     </div>

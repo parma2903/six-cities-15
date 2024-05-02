@@ -1,16 +1,20 @@
 import ListReviews from '../listReviews/listReviews';
 import ReviewForm from '../reviewForm/reviewForm';
 import { Reviews } from '../../types/offers';
+import { AuthorizationStatus } from '../../const';
+import { useAppSelector } from '../../hooks/useApp';
+import { getAuthorizationStatus } from '../../store/user/selectors';
 
 type ReviewsProps = {
-  isAuth: boolean;
   reviews: Reviews;
+  offerId?: string;
 }
-function ReviewBlock({isAuth, reviews}: ReviewsProps): JSX.Element {
+function ReviewBlock({reviews, offerId}: ReviewsProps): JSX.Element {
+  const authorizationStatus = useAppSelector(getAuthorizationStatus);
   return (
     <>
       <ListReviews reviews={reviews}/>
-      {isAuth && <ReviewForm />}
+      {authorizationStatus === AuthorizationStatus.Auth && <ReviewForm offerId={offerId}/>}
 
     </>
   );
