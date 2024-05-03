@@ -1,28 +1,31 @@
-import { Link } from 'react-router-dom';
-import {useRef, FormEvent, useCallback} from 'react';
-import { useAppDispatch } from '../hooks/useApp';
+import { Link, useNavigate } from 'react-router-dom';
+import {useRef, FormEvent, useCallback, useEffect} from 'react';
+import { useAppDispatch, useAppSelector } from '../hooks/useApp';
 import { loginAction } from '../store/api-actions';
-import { AuthData } from '../types/offers';
+import { getAuthorizationStatus } from '../store/user/selectors';
+import { AppRoute, AuthorizationStatus } from '../const';
 
 function LoginScreen(): JSX.Element {
   const loginRef = useRef<HTMLInputElement | null>(null);
   const passwordRef = useRef<HTMLInputElement | null>(null);
-
   const dispatch = useAppDispatch();
-  const onSubmit = (authData: AuthData) => {
-    dispatch(loginAction(authData));
-  };
+  const navigate = useNavigate();
+  const authorizationStatus = useAppSelector(getAuthorizationStatus);
 
   const handleSubmit = useCallback((evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
-
-    if (loginRef.current !== null && passwordRef.current !== null) {
-      onSubmit({
-        login: loginRef.current.value,
-        password: passwordRef.current.value
-      });
+    const loginValue = loginRef.current?.value;
+    const passwordValue = passwordRef.current?.value;
+    if (loginValue !== undefined && passwordValue !== undefined) {
+      dispatch(loginAction({login: loginValue, password: passwordValue}));
     }
   }, []);
+
+  useEffect(() => {
+    if (authorizationStatus === AuthorizationStatus.Auth) {
+      navigate(AppRoute.Main);
+    }
+  }, [authorizationStatus, navigate]);
 
   return (
     <div className="page page--gray page--login">
