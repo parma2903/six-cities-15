@@ -1,7 +1,7 @@
 import { AppRoute } from '../../const';
 import { Offer } from '../../types/offers';
-import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { useFavorites } from '../../hooks/useFavorites';
 
 type OfferCardProps = {
   offer: Offer;
@@ -11,7 +11,10 @@ type OfferCardProps = {
 
 function OfferCard({offer, isActive, setCardHoverId }: OfferCardProps): JSX.Element {
   const { id, title, type, price, isFavorite, isPremium, rating, previewImage } = offer;
-  const [isFavoriteCard, setIsFavoriteCard] = useState(isFavorite);
+  const favoriteStatus = isFavorite ? 0 : 1;
+  const location = useLocation();
+  const isOfferPage = location.pathname.includes('offer');
+  const handleBookmarkClick = useFavorites(id, favoriteStatus);
 
   const handleCardMouseEnter = () => {
     if (setCardHoverId) {
@@ -27,15 +30,11 @@ function OfferCard({offer, isActive, setCardHoverId }: OfferCardProps): JSX.Elem
 
   return (
     <article
-      className={`cities__card place-card ${isActive ? 'place-card--active' : ''}`}
+      className={`${isOfferPage ? 'near-places__card' : 'cities__card'} place-card ${isActive ? 'place-card--active' : ''}`}
       onMouseEnter={handleCardMouseEnter}
       onMouseLeave={handleCardMouseLeave}
     >
-      {isPremium ? (
-        <div className="place-card__mark">
-          <span>Premium</span>
-        </div>
-      ) : null}
+      {isPremium && <div className="place-card__mark"><span>Premium</span></div>}
       <div className="cities__image-wrapper place-card__image-wrapper">
         <Link to={`offer/${id}`}>
           <img
@@ -54,9 +53,9 @@ function OfferCard({offer, isActive, setCardHoverId }: OfferCardProps): JSX.Elem
             <span className="place-card__price-text">/&nbsp;night</span>
           </div>
           <button
-            className={`place-card__bookmark-button button ${isFavoriteCard ? 'place-card__bookmark-button--active' : ''}`}
+            className={`place-card__bookmark-button button ${isFavorite ? 'place-card__bookmark-button--active' : ''}`}
             type="button"
-            onClick={() => setIsFavoriteCard(!isFavoriteCard)}
+            onClick={handleBookmarkClick}
           >
             <svg
               className="place-card__bookmark-icon"
