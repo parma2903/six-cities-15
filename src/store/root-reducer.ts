@@ -6,6 +6,7 @@ import { user } from './user/user';
 import { reviews } from './review/review';
 import { nearbyOffers } from './nearbyOffers/nearbyOffers';
 import { errorMessage } from './error/error';
+import { favoriteOffer } from './favoriteOffers/favoriteOffers';
 
 export const rootReducer = combineReducers({
   [NameSpace.Offers]: offers.reducer,
@@ -13,5 +14,6 @@ export const rootReducer = combineReducers({
   [NameSpace.User]: user.reducer,
   [NameSpace.Reviews]: reviews.reducer,
   [NameSpace.NearbyOffers]: nearbyOffers.reducer,
+  [NameSpace.FavoriteOffers]: favoriteOffer.reducer,
   [NameSpace.ErrorMessage]: errorMessage.reducer,
 });

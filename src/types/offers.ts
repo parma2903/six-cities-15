@@ -115,8 +115,8 @@ export type State = {
   [NameSpace.User]: UserProcess;
   [NameSpace.Reviews]: ReviewsData;
   [NameSpace.NearbyOffers]: NearbyOffersData;
-  // [NameSpace.FavoriteOffers]: FavoriteOffersData;
-   [NameSpace.ErrorMessage]: ErrorData;
+  [NameSpace.FavoriteOffers]: FavoriteOffersData;
+  [NameSpace.ErrorMessage]: ErrorData;
 };
 
 export type AppDispatch = typeof store.dispatch;

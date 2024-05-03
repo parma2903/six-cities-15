@@ -1,13 +1,15 @@
-import { Link } from 'react-router-dom';
 import SignOutButton from '../signOutButton/signOutButton';
 import { useAppSelector } from '../../hooks/useApp';
 import { AppRoute, AuthorizationStatus } from '../../const';
-import { NavLink } from 'react-router-dom';
-import { getAuthorizationStatus } from '../../store/user/selectors';
+import { Link, NavLink } from 'react-router-dom';
+import { getAuthorizationStatus, getUser } from '../../store/user/selectors';
+import { getFavoriteOffers } from '../../store/favoriteOffers/selectors';
 
 function Header(): JSX.Element {
   const authorizationStatus = useAppSelector(getAuthorizationStatus);
   const isLoggedIn = authorizationStatus === AuthorizationStatus.Auth;
+  const user = useAppSelector(getUser);
+  const favoriteOffers = useAppSelector(getFavoriteOffers);
 
   return (
     <header className="header">
@@ -32,10 +34,9 @@ function Header(): JSX.Element {
                     className="header__nav-link header__nav-link--profile"
                     to={AppRoute.Favorites}
                   >
-                    <div className="header__avatar-wrapper user__avatar-wrapper">
-                    </div>
-                    <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
-                    <span className="header__favorite-count">3</span>
+                    <div className="header__avatar-wrapper user__avatar-wrapper" style={{ backgroundImage: `url(${user?.avatarUrl})`}}></div>
+                    <span className="header__user-name user__name">{user?.email}</span>
+                    <span className="header__favorite-count">{favoriteOffers.length}</span>
                   </NavLink>
                 </li>
                 <li className="header__nav-item">
