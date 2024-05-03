@@ -1,38 +1,48 @@
-import { useState } from 'react';
+import { useEffect } from 'react';
 import Header from '../components/header/header';
 import ListCardsFavorite from '../components/listCardsFavorite/listCardsFavorite';
 import { Link } from 'react-router-dom';
-import { useAppSelector } from '../hooks/useApp';
-import { getOffers } from '../store/offers/selectors';
+import { useAppDispatch, useAppSelector } from '../hooks/useApp';
+import { groupOffersByCity } from '../utils';
+import { getFavoriteOffers, getFavoritesLength, getIsFavoritesLoading } from '../store/favoriteOffers/selectors';
+import { fetchFavoritesOffersAction } from '../store/api-actions';
+import LoadingScreen from '../components/loadingScreen/loadingScreen';
+import FavoritesEmptyScreen from '../components/favorites-empty/favorites-empty';
 
 function FavoritesScreen(): JSX.Element {
-  const offers = useAppSelector(getOffers);
-  const favoriteOffers = offers.filter((offer) => offer.isFavorite);
-  const [activeCardId, setActiveCardId] = useState<string | null>(null);
+  const favoriteOffers = useAppSelector(getFavoriteOffers);
+  const isFavoritesLoading = useAppSelector(getIsFavoritesLoading);
+  const favoritesLength = useAppSelector(getFavoritesLength);
+  const dispatch = useAppDispatch();
+  const offersByCity = groupOffersByCity(favoriteOffers);
 
-  function handleCardMouseEnter(offerId: string) {
-    setActiveCardId(offerId);
-  }
-
-  function handleCardMouseLeave() {
-    setActiveCardId(null);
-  }
+  useEffect(() => {
+    dispatch(fetchFavoritesOffersAction());
+  }, [dispatch]);
 
   return (
     <div className="page">
       <Header />
       <main className="page__main page__main--favorites">
-        <div className="page__favorites-container container">
-          <section className="favorites">
-            <h1 className="favorites__title">Saved listing</h1>
-            <ListCardsFavorite
-              offers={favoriteOffers}
-              activeCardId={activeCardId}
-              onCardMouseEnter={handleCardMouseEnter}
-              onCardMouseLeave={handleCardMouseLeave}
-            />
-          </section>
-        </div>
+        {isFavoritesLoading && <LoadingScreen/>}
+        {!favoritesLength ? (
+          <FavoritesEmptyScreen />
+        ) : (
+          <div className="page__favorites-container container">
+            <section className="favorites">
+              <h1 className="favorites__title">Saved listing</h1>
+              <ul className="favorites__list">
+                {Object.entries(offersByCity).map(([cityName, offers]) => (
+                  <ListCardsFavorite
+                    key={cityName}
+                    city={cityName}
+                    offersByCity={offers}
+                  />
+                ))}
+              </ul>
+            </section>
+          </div>
+        )}
       </main>
       <footer className="footer container">
         <Link className="footer__logo-link" to="main.html">

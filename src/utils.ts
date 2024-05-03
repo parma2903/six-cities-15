@@ -50,3 +50,19 @@ export function sortReviewsByDate(reviews: Reviews): Reviews {
     return dateB - dateA;
   });
 }
+
+export function groupOffersByCity(offers: Offers): { [key: string]: Offers } {
+  return offers.reduce((acc: { [key:string]: Offers }, offer) => {
+    const cityName = offer.city.name;
+    if (!acc[cityName]) {
+      acc[cityName] = [];
+    }
+    acc[cityName].push(offer);
+    return acc;
+  }, {});
+}
+
+export function getCityByName(cityName: string, offers: Offers): City | undefined {
+  const foundOffer = offers.find((offer) => offer.city.name === cityName);
+  return foundOffer ? foundOffer.city : undefined;
+}
