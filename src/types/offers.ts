@@ -16,7 +16,7 @@ export type Offer = {
   maxAdults: number;
   description: string;
   images: string[];
-  host: Host;
+  host: User;
   goods: string[];
 };
 
@@ -41,12 +41,6 @@ export type UserAuth = {
 };
 
 export type UserData = User & UserAuth;
-
-export type Host = {
-  name: string;
-  avatarUrl: string;
-  isPro: boolean;
-};
 
 export type Comment = {
   id: string;
