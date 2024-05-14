@@ -24,9 +24,9 @@ export const makeFakeUser = (): User => ({
 
 export const makeFakeUserData = (): UserData => ({
   name: internet.userName(),
-  avatarUrl: internet.url(),
+  avatarUrl: datatype.string(),
   isPro: datatype.boolean(),
-  email: internet.email(),
+  email: datatype.string(),
   token: datatype.string(),
 });
 
