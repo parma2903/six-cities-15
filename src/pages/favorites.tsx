@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../hooks/useApp';
 import { groupOffersByCity } from '../utils';
 import { getFavoriteOffers, getFavoritesLength, getIsFavoritesLoading } from '../store/favoriteOffers/selectors';
-import { fetchFavoritesOffersAction } from '../store/api-actions';
+import { fetchFavoritesOffersAction } from '../store/apiActions';
 import LoadingScreen from '../components/loadingScreen/loadingScreen';
 import FavoritesEmptyScreen from '../components/favorites-empty/favorites-empty';
 

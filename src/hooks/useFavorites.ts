@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { getAuthorizationStatus } from '../store/user/selectors';
 import { useAppDispatch, useAppSelector } from './useApp';
 import { AppRoute, AuthorizationStatus } from '../const';
-import { setFavoriteAction } from '../store/api-actions';
+import { setFavoriteAction } from '../store/apiActions';
 
 export const useFavorites = (offerId: string, status: number) => {
   const dispatch = useAppDispatch();

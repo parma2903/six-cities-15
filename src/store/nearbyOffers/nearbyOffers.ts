@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { NameSpace } from '../../const';
 import { NearbyOffersData, Offer } from '../../types/offers';
-import { fetchNearbyOffersAction } from '../api-actions';
+import { fetchNearbyOffersAction } from '../apiActions';
 
 const initialState: NearbyOffersData = {
   nearbyOffers: [],

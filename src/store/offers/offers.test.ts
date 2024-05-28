@@ -4,7 +4,7 @@ import { DEFAUL_CITY, SORTING_OPTIONS } from '../../const';
 import { OffersData, City } from '../../types/offers';
 import { setOffersByCity } from './offers';
 import { getOffersByCity, getCitiesNames, getCitiesFromOffers } from '../../utils';
-import { fetchOffersAction } from '../api-actions';
+import { fetchOffersAction } from '../apiActions';
 
 const initialState: OffersData = {
   allOffers: [],

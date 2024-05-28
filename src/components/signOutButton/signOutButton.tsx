@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { logoutAction } from '../../store/api-actions';
+import { logoutAction } from '../../store/apiActions';
 import { useAppDispatch } from '../../hooks/useApp';
 import { AppRoute } from '../../const';
 

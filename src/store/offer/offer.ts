@@ -1,7 +1,7 @@
 
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { NameSpace } from '../../const';
-import { fetchOfferAction } from '../api-actions';
+import { fetchOfferAction } from '../apiActions';
 import { OfferData } from '../../types/offers';
 
 const initialState: OfferData = {

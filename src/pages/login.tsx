@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import {useRef, FormEvent, useCallback, useEffect} from 'react';
 import { useAppDispatch, useAppSelector } from '../hooks/useApp';
-import { loginAction } from '../store/api-actions';
+import { loginAction } from '../store/apiActions';
 import { getAuthorizationStatus } from '../store/user/selectors';
 import { AppRoute, AuthorizationStatus } from '../const';
 

@@ -2,7 +2,7 @@ import { Fragment, ReactEventHandler, useEffect, useState, FormEvent } from 'rea
 import { useAppDispatch, useAppSelector } from '../../hooks/useApp';
 import { FetchStatus, REVIEW_INITIAL_STATE, MIN_COMMENT_LENGTH, MAX_COMMENT_LENGTH } from '../../const';
 import { getReviewsStatus } from '../../store/review/selectors';
-import { submitCommentAction } from '../../store/api-actions';
+import { submitCommentAction } from '../../store/apiActions';
 
 type ChangeHandler = ReactEventHandler<HTMLInputElement | HTMLTextAreaElement>
 

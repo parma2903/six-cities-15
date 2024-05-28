@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { FavoriteOffersData } from '../../types/offers';
 import { NameSpace } from '../../const';
-import { fetchFavoritesOffersAction, setFavoriteAction } from '../api-actions';
+import { fetchFavoritesOffersAction, setFavoriteAction } from '../apiActions';
 
 const initialState: FavoriteOffersData = {
   favoriteOffers: [],

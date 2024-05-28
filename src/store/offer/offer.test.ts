@@ -1,6 +1,6 @@
 import { makeFakeOffer } from '../../mocksTest';
 import { OfferData } from '../../types/offers';
-import { fetchOfferAction } from '../api-actions';
+import { fetchOfferAction } from '../apiActions';
 import { offer, setFavoriteOffer } from './offer';
 
 const fakeOffer = makeFakeOffer();

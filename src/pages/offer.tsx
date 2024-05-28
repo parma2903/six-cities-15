@@ -8,7 +8,7 @@ import { getReviews } from '../store/review/selectors';
 import { getNearbyOffers } from '../store/nearbyOffers/selectors';
 import { Navigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { fetchNearbyOffersAction, fetchOfferAction, fetchReviewsAction } from '../store/api-actions';
+import { fetchNearbyOffersAction, fetchOfferAction, fetchReviewsAction } from '../store/apiActions';
 import LoadingScreen from '../components/loadingScreen/loadingScreen';
 import { useFavorites } from '../hooks/useFavorites';
 import { setRatingStars } from '../utils';

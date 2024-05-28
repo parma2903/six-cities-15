@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { checkAuthAction, fetchFavoritesOffersAction, loginAction, logoutAction } from '../api-actions';
+import { checkAuthAction, fetchFavoritesOffersAction, loginAction, logoutAction } from '../apiActions';
 import { AuthorizationStatus, NameSpace } from '../../const';
 import { UserData, UserProcess } from '../../types/offers';
 
